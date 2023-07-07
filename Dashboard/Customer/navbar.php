@@ -146,20 +146,22 @@
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
           <li>
-            <a href="">
+            <a href="view_re.php">
               <i class="bi bi-circle"></i><span>View Request</span>
             </a>
           </li>
           <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>View Approved</span>
+            <a href="rejected.php">
+              <i class="bi bi-circle"></i><span>View Rejected</span>
             </a>
           </li>
           <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>Payment Method</span>
+            <a href="approved.php">
+              <i class="bi bi-circle"></i><span>View Approved</span>
             </a>
           </li>
+
+         
 
           </ul>
       </li>
@@ -167,7 +169,7 @@
       
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="payment_dane.php">
           <i class="bi bi-cash"></i></i>
           <span>Payment</span>
         </a>

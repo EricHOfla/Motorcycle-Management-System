@@ -21,9 +21,11 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Users</h5>
+              <div class="box-header with-border">
+              <a href="insert-user.php" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>Add New User</a>
+            </div>
               <p></p>
-<?php
-          echo"
+
               <!-- Table rows -->
               <table class='table datatable'>
                 <thead>  
@@ -37,9 +39,12 @@
                     <th scope='col'>Account type</th>
                     <th scope='col'>Status</th>
                     <th scope='col'>Action</th>
-                    </thead>";
+                    </thead>
+                    <tr>
+                    <?php
+         
                     $count = 1;  
-                $fetch = mysqli_query($conn,"select * from users");
+                $fetch = mysqli_query($conn,"select * from users where status='Denied'");
                 while($row = mysqli_fetch_array($fetch))
                 {
                  echo"<tr>";
@@ -50,7 +55,7 @@
                  echo"<td>".$row['email']."</td>";
                  echo"<td>".$row['position']."</td>";
                  echo"<td>".$row['account_type']."</td>";
-                 echo"<td>".$row['status']."</td>";          
+                 echo"<td><span class='badge bg-danger'>".$row['status']."</td>";          
                  echo"<td class='text-right'>".
                 
 						"<div class='dropdown'>
@@ -59,11 +64,43 @@
 						<a class='dropdown-item' href=edit-user.php?User_id=".$row['User_id']."><i class='bi bi-pencil'></i> Edit</a>".
 						"<a class='dropdown-item' href=delete_user.php?User_id=".$row['User_id']."><i class='bi bi-trash'></i> Delete</a>"."</td>";
             $count = $count + 1; 
-          }     
-echo"</table>";
+          }  
+          "</tr>";
+          ?>  
+              </tr> 
+
+              <tr>
+                    <?php
+         
+                   
+                $fetch = mysqli_query($conn,"select * from users where status='Allowed'");
+                while($row = mysqli_fetch_array($fetch))
+                {
+                 echo"<tr>";
+                 echo"<td>".$count."</td>";
+                 echo"<td>".$row['Firstname']."</td>";
+                 echo"<td>".$row['Lastname']."</td>";
+                 echo"<td>".$row['Username']."</td>";
+                 echo"<td>".$row['email']."</td>";
+                 echo"<td>".$row['position']."</td>";
+                 echo"<td>".$row['account_type']."</td>";
+                 echo"<td><span class='badge bg-success'>".$row['status']."</td>";          
+                 echo"<td class='text-right'>".
+                
+						"<div class='dropdown'>
+						<a href='#' class='action-icon bi bi-three-dots-vertical' data-bs-toggle='dropdown'></a>
+						<div class='dropdown-menu dropdown-menu-right'>
+						<a class='dropdown-item' href=edit-user.php?User_id=".$row['User_id']."><i class='bi bi-pencil'></i> Edit</a>".
+						"<a class='dropdown-item' href=delete_user.php?User_id=".$row['User_id']."><i class='bi bi-trash'></i> Delete</a>"."</td>";
+            $count = $count + 1; 
+          }  
+          "</tr>";
+          ?>  
+              </tr> 
+         </table>
             
                 
-?>
+
               <!-- End Table rows -->
 
             </div>

@@ -68,7 +68,7 @@ if (isset($_POST['login']))
                            {
                                ?>
                                <script>
-                                 alert('You account was Dinied, Please contact ADMIN');
+                                 alert('You account was Denied, Please contact ADMIN');
                                </script>
                                <?php
                             echo"<meta http-equiv='refresh' content='0;url=staff-login.php'>";
@@ -186,7 +186,7 @@ if (isset($_POST['login']))
                       <button class="btn btn-info w-100" type="submit" name="login">Login</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="pages-register.php">Create an account</a></p>
+                      <p class="small">Don't have account? <a href="pages-register.php">Create a customer account</a></p>
                     </div>
                   </form>
 

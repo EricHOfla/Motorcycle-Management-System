@@ -24,8 +24,7 @@
               <h5 class="card-title">Our Store</h5>
               <p></p>
 
-              <?php
-          echo"
+            
               <!-- Table rows -->
               <table class='table datatable'>
                 <thead>  
@@ -33,35 +32,143 @@
                     <th scope='col'>#</th>
                     <th scope='col'>MARK</th>
                     <th scope='col'>PLATE_NO</th>
-                    <th scope='col'>STATUS</th>
                     <th scope='col'>PRICE</th>
+                    <th scope='col'>STATUS</th>
                     <th scope='col'>DATE_STORED</th>
+                    <th scope='col'>#</th>
                     <th scope='col'>Action</th>
-                    </thead>";
-                $count = 1;
-                $fetch = mysqli_query($conn,"select * from store");
+                    </thead>
+                    <?php
+                $count = 1;  
+                $fetch = mysqli_query($conn,"select * from store where stat!='Dane' and requ='Approved'");
                 while($row = mysqli_fetch_array($fetch))
                 {
-                 echo"<tr>";
-                 echo"<td>".$count."</td>";
-                 echo"<td>".$row['mark']."</td>";
-                 echo"<td>".$row['plate_no']."</td>";
-                 echo"<td>".$row['status']."</td>";
-                 echo"<td>".$row['price']."</td>";
-                 echo"<td>".$row['datestored']."</td>";          
-                 echo"<td class='text-right'>".
+                 echo'
+               
+                 <tr>
+                    <th><a href="#">'.$count.'</a></th>
+                    <td>'.$row['mark'].'</td>
+                    <td><a href="#" class="text-primary">'.$row['plate_no'].'</a></td>
+                    <td>'.$row['price'].'</td>
+                    <td>'.$row['status'].'</td>
+                    <td>'.$row['datestored'].'</td>
+                    <td><span class="badge bg-success">'.$row['requ'].'</span></td>';
+                  echo"  
+                    <td class='text-right'>".
                 
-						"<div class='dropdown'>
-						<a href='#' class='action-icon bi bi-three-dots-vertical' data-bs-toggle='dropdown'></a>
-						<div class='dropdown-menu dropdown-menu-right'>
-						<a class='dropdown-item' href=update_store.php?s_id=".$row['s_id']."><i class='bi bi-pencil'></i> Edit</a>".
-						"<a class='dropdown-item' href=delete_store.php?s_id=".$row['s_id']."><i class='bi bi-trash'></i> Delete</a>"."</td>";
-            $count = $count + 1;
-          }     
-echo"</table>";
-            
+                "<div class='dropdown'>
+                <a href='#' class='action-icon bi bi-three-dots-vertical' data-bs-toggle='dropdown'></a>
+                <div class='dropdown-menu dropdown-menu-right'>
+                <a class='dropdown-item' href=update_store.php?s_id=".$row['s_id']."><i class='bi bi-pencil'></i> Edit</a>".
+                "<a class='dropdown-item' href=delete_store.php?s_id=".$row['s_id']."><i class='bi bi-trash'></i> Delete</a>"."</td>";
+                 
+                 '</tr>';
+                  $count=$count +1;
+                }
+                ?>
+               </tr>
+
+               <tr>
+                <?php
                 
-?>
+                $fetch = mysqli_query($conn,"select * from store where stat!='Dane' and requ='Rejected'");
+                while($row = mysqli_fetch_array($fetch))
+                {
+                 echo'
+               
+                
+                 <tr>
+                    <th><a href="#">'.$count.'</a></th>
+                    <td>'.$row['mark'].'</td>
+                    <td><a href="#" class="text-primary">'.$row['plate_no'].'</a></td>
+                    <td>'.$row['price'].'</td>
+                    <td>'.$row['status'].'</td>
+                    <td>'.$row['datestored'].'</td>
+                    <td><span class="badge bg-danger">'.$row['requ'].'</span></td>';
+                  echo"  
+                    <td class='text-right'>".
+                
+                "<div class='dropdown'>
+                <a href='#' class='action-icon bi bi-three-dots-vertical' data-bs-toggle='dropdown'></a>
+                <div class='dropdown-menu dropdown-menu-right'>
+                <a class='dropdown-item' href=update_store.php?s_id=".$row['s_id']."><i class='bi bi-pencil'></i> Edit</a>".
+                "<a class='dropdown-item' href=delete_store.php?s_id=".$row['s_id']."><i class='bi bi-trash'></i> Delete</a>"."</td>";
+                 
+                 '</tr>';
+                  $count=$count +1;
+                }
+                ?>
+               </tr>
+
+              
+               </tr>
+
+               <tr>
+                <?php
+                
+                $fetch = mysqli_query($conn,"select * from store where stat!='Dane' and requ='Pending'");
+                while($row = mysqli_fetch_array($fetch))
+                {
+                 echo'
+               
+                 <tr>
+                    <th><a href="#">'.$count.'</a></th>
+                    <td>'.$row['mark'].'</td>
+                    <td><a href="#" class="text-primary">'.$row['plate_no'].'</a></td>
+                    <td>'.$row['price'].'</td>
+                    <td>'.$row['status'].'</td>
+                    <td>'.$row['datestored'].'</td>
+                    <td><span class="badge bg-warning">'.$row['requ'].'</span></td>';
+                  echo"  
+                    <td class='text-right'>".
+                
+                "<div class='dropdown'>
+                <a href='#' class='action-icon bi bi-three-dots-vertical' data-bs-toggle='dropdown'></a>
+                <div class='dropdown-menu dropdown-menu-right'>
+                <a class='dropdown-item' href=update_store.php?s_id=".$row['s_id']."><i class='bi bi-pencil'></i> Edit</a>".
+                "<a class='dropdown-item' href=delete_store.php?s_id=".$row['s_id']."><i class='bi bi-trash'></i> Delete</a>"."</td>";
+                 
+                 '</tr>';
+                  $count=$count +1;
+                }
+                ?>
+               </tr>
+
+
+               
+               <tr>
+                <?php
+                
+                $fetch = mysqli_query($conn,"select * from store where stat!='Dane' and requ='New'");
+                while($row = mysqli_fetch_array($fetch))
+                {
+                 echo'
+               
+                 <tr>
+                    <th><a href="#">'.$count.'</a></th>
+                    <td>'.$row['mark'].'</td>
+                    <td><a href="#" class="text-primary">'.$row['plate_no'].'</a></td>
+                    <td>'.$row['price'].'</td>
+                    <td>'.$row['status'].'</td>
+                    <td>'.$row['datestored'].'</td>
+                    <td><span class="badge bg-info">'.$row['requ'].'</span></td>';
+                  echo"  
+                    <td class='text-right'>".
+                
+                "<div class='dropdown'>
+                <a href='#' class='action-icon bi bi-three-dots-vertical' data-bs-toggle='dropdown'></a>
+                <div class='dropdown-menu dropdown-menu-right'>
+                <a class='dropdown-item' href=update_store.php?s_id=".$row['s_id']."><i class='bi bi-pencil'></i> Edit</a>".
+                "<a class='dropdown-item' href=delete_store.php?s_id=".$row['s_id']."><i class='bi bi-trash'></i> Delete</a>"."</td>";
+                 
+                 '</tr>';
+                  $count=$count +1;
+                }
+                ?>
+               </tr>
+
+                </tbody>
+              </table>
                
               <!-- End Table rows -->
 

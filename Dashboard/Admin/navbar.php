@@ -36,7 +36,7 @@
       session_start();
       include('../connect.php');
       if(!isset($_SESSION['username']))
-    header('location:../../pages-login.php');
+    header('location:../../staff-login.php');
  
      ?>
 
@@ -200,23 +200,23 @@
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
           <li>
-            <a href="">
+            <a href="customers_info.php">
               <i class="bi bi-circle"></i><span>Customers Info</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="bookcustomer.php">
               <i class="bi bi-circle"></i><span>Booking Customers</span>
             </a>
           </li>
 
           <li>
-            <a href="">
+            <a href="approvedcustomer.php">
               <i class="bi bi-circle"></i><span>Approved Customers</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="paymentdane.php">
               <i class="bi bi-circle"></i><span>Payment Customers</span>
             </a>
           </li>

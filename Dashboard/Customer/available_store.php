@@ -1,5 +1,6 @@
 <?php 
             include 'navbar.php';
+            $cid = $_SESSION['c_id'];
             // include 'sidebar.php';
 ?>
   <main id="main" class="main">
@@ -40,7 +41,9 @@
                     </thead>";
                 $count = 1;
                 $status="NOT PAID";
-                $fetch = mysqli_query($conn,"select * from store where status='$status'");
+                $requ="Approved";
+
+                $fetch = mysqli_query($conn,"select * from store where  requ!='$requ' and status='$status' and stat='Normal'");
                 while($row = mysqli_fetch_array($fetch))
                 {
                  echo"<tr>";
@@ -56,9 +59,10 @@
 						<a href='#' class='action-icon bi bi-three-dots-vertical' data-bs-toggle='dropdown'></a>
 						<div class='dropdown-menu dropdown-menu-right'>
 						<a class='dropdown-item' href=view_store.php?s_id=".$row['s_id']."><i class='bi bi-pencil'></i>View</a>".
-            "<a class='dropdown-item' href=request_store.php?s_id=".$row['s_id']."><i class='bi bi-trash'></i>Request</a>"."</td>";
+            
             "</td>";
             $count = $count + 1;
+            
           }     
 echo"</table>";
             
